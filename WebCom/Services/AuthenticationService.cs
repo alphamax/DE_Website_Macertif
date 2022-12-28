@@ -24,15 +24,14 @@ namespace WebCom.Services
             return user.HashPassword == hashPassword;
         }
 
-        public bool AuthenticateUser(string login, string password)
+        public void CreateUser(string login, string password)
         {
             var user = _Context.Users.FirstOrDefault(item => item.Email == login);
             if (user == null)
             {
-                return false;
+                _Context.Users.Add(new User() { Email = login, HashPassword = HashPassword(password, "SALT") });
+                _Context.SaveChanges();
             }
-            var hashPassword = HashPassword(password, "SALT");
-            return user.HashPassword == hashPassword;
         }
 
         private string HashPassword(string input, string salt)
