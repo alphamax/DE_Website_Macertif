@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using WebCom.Models.Views.Common
+@model ErrorVM
 
 <div class="text-center">
     <div class="container">
@@ -25,7 +27,12 @@
                             </fieldset>
                             <span>ou créez un compte : </span>
                             @Html.ActionLink("Creez un compte", "CreateUser", "Home")
-                            
+                        }
+                        @if(Model != null && !string.IsNullOrWhiteSpace(Model.ErrorText))
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @Model.ErrorText
+                            </div>
                         }
                     </div>
                 </div>

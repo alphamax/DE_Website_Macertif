@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using WebCom.Data;
 using WebCom.Models;
+using WebCom.Models.Views.Common;
 using WebCom.Models.Views.Home;
 using WebCom.Services.Interfaces;
 
@@ -26,8 +27,12 @@ namespace WebCom.Controllers
             if (isAuthenticated)
             {
                 HttpContext.Session.SetString("IsAuthenticated", loginVM.Email);
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return RedirectToAction("Index", new ErrorVM() { ErrorTag = "ERR_LOGIN", ErrorText = "Invalid login or password" });
+            }
         }
 
         public IActionResult CreateUser(LoginVM loginVM)
@@ -43,9 +48,9 @@ namespace WebCom.Controllers
             }
         }
 
-        public IActionResult Index()
+        public IActionResult Index(ErrorVM errorVM)
         {
-            return View();
+            return View(errorVM);
         }
 
         public IActionResult Privacy()
