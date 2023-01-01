@@ -27,6 +27,18 @@
                         </li>
                     </ul>
                 </div>
+                @if (true.Equals(ViewData["IsAuthenticated"]))
+                {
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        Bienvenu utilisateur !
+                    </div>
+                }
+                else
+                {
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        Merci de vous identifier...
+                    </div>
+                }
             </div>
         </nav>
     </header>

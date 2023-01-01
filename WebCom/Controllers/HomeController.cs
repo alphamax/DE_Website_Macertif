@@ -50,6 +50,16 @@ namespace WebCom.Controllers
 
         public IActionResult Index(ErrorVM errorVM)
         {
+            var isAuthenticated = HttpContext.Session.GetString("IsAuthenticated");
+            if (isAuthenticated != null)
+            {
+                ViewData["IsAuthenticated"] = true;
+            }
+            else
+            {
+                ViewData["IsAuthenticated"] = false;
+            }
+
             return View(errorVM);
         }
 
