@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebCom.Data;
 
@@ -10,9 +11,11 @@ using WebCom.Data;
 namespace WebCom.Migrations
 {
     [DbContext(typeof(WebComContext))]
-    partial class WebComContextModelSnapshot : ModelSnapshot
+    [Migration("20230102225742__002_Product")]
+    partial class _002Product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

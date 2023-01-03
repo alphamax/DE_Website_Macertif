@@ -27,7 +27,7 @@ namespace WebCom.Controllers
             if (isAuthenticated)
             {
                 HttpContext.Session.SetString("IsAuthenticated", loginVM.Email);
-                return RedirectToAction("Index");
+                return RedirectToAction("List", "Product");
             }
             else
             {

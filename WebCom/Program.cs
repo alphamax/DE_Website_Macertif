@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<WebComContext>(item => item.UseSqlServer("name=ConnectionStrings:WebComStr"));
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 //In-Memory
 builder.Services.AddDistributedMemoryCache();
