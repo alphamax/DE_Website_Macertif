@@ -18,8 +18,18 @@ namespace WebCom.Controllers
 
         public IActionResult List()
         {
-            var products = _productService.GetProducts();
-            return View(products);
+            var isAuthenticated = HttpContext.Session.GetString("IsAuthenticated");
+            if (isAuthenticated != null)
+            {
+                ViewData["IsAuthenticated"] = true;
+                var products = _productService.GetProducts();
+                return View(products);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
         }
     }
 }
